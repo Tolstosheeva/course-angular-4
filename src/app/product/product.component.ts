@@ -8,11 +8,13 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ProductComponent implements OnInit {
 
   @Input() product: any;
+  
 
   constructor() { }
 
   ngOnInit(): void {
     console.log(this.product);
   }
-
+  
 }
+
