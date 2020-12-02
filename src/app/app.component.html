@@ -1,21 +1,36 @@
-<h1>
-    Welcome {{name}}!!!
-</h1>
-<p>{{number + 10}}</p>
-<ul>
-    <li *ngFor="let number of arrNumber">{{number}}</li>
-</ul>
-<div *ngFor="let product of products">
-    <h3>{{product.name}}</h3>
-    <p>Price:{{product.price}}</p>
-    <p>stock:{{product.isStock}}</p>
-    
-</div>
-<button (click)="addProduct()">Add product</button>
-<button (click)="openDropdown()">Menu</button>
-<ul *ngIf="isOpenMenu" >
-    <li>html</li>
-    <li>css</li>
-    <li>js</li>
-    <li>angular</li>
-</ul>
+<h2>Product list</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Product</th>
+      <th scope="col" (click)="sortClick()">Price</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let product of products | sort : sortOrign">
+    <tr>
+      <th scope="row">{{product.id}}</th>
+      <td>{{product.name}}</td>
+      <td>{{product.price}}</td>
+
+    </tr>
+    <!-- <tr>
+      <th scope="row">2</th>
+      <td>{{product.name}}</td>
+      <td>{{product.price}}</td>
+      
+    </tr> -->
+    <!-- <tr>
+      <th scope="row">3</th>
+      <td>{{product.name}}</td>
+      <td>{{product.price}}</td>
+          </tr> -->
+  </tbody>
+  <tfoot>
+    <td>Total</td>
+    <td></td>
+    <td>$200</td>
+    <td></td>
+  </tfoot>
+</table>

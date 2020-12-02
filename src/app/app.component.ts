@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Product } from './user.model';
 
 @Component({
   selector: 'app-root',
@@ -6,40 +7,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  name ='Mary';
 
-  number =10;
+  
+  sortOrign = 'desc';
+  products: Product[] = [{
+    id: 1,
+    name: 'Product 1',
+    price: 100
+  }, {
+    id: 2,
+    name: 'Product 2',
+    price: 50
+  }, {
+    id: 3,
+    name: 'Product 3',
+    price: 50
+  }]
+  sortClick() {
+    this.sortOrign = this.sortOrign === 'asc' ? 'desc' : 'asc';
 
-  arrNumber = [10,40,49];
-
-  products = [{
-    name:'Product 1',
-    price: 20,
-    isStock:true
-
-  },{
-    name:'Product 2',
-    price: 30,
-    isStock:true
-  },{
-    name:'Product 3',
-    price: 10,
-    isStock:false
-  },{
-    name:'Product 4',
-    price: 27,
-    isStock:true
-  }];
-isOpenMenu = false;
-  openDropdown(){
-    this.isOpenMenu = !this.isOpenMenu;
   }
-  addProduct(){
-    this.products.push({
-      name:'Product 5',
-      price: 35,
-      isStock:true
-    });
-    this.name = 'Bob';
-  }
- }
+}
