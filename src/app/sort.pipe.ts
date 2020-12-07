@@ -6,10 +6,10 @@ import { Product } from './user.model';
 })
 export class SortPipe implements PipeTransform {
 
-  transform(value: Product[], args: string): any[] {
+  transform(value: Product[], ...args: unknown[]): unknown {
     console.log(value, args);
     function sortArray(a: Product, b: Product): number {
-      if (args === 'desc') {
+      if (args[0] === 'desc') {
         return b.price - a.price;
       } else {
         return a.price - b.price;
