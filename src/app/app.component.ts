@@ -7,7 +7,8 @@ import { Product } from './product.model';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
+carts:Product [] = [];
+total:number = 0;
   view: string = 'grid';
 
   products: Product[] = [{
@@ -22,5 +23,21 @@ export class AppComponent {
 
   changeView(view: string) {
     this.view = view;
+  }
+  addToCart(product:Product){
+
+this.carts.push(product);
+this.totalCart();
+  }
+  totalCart(){
+    let total = 0;
+    this.carts.forEach((product)=>{
+      total+=product.price;
+    });
+    this.total = total;
+  }
+  delete(i: number){
+    this.carts.splice(i,1);
+    this.totalCart();
   }
 }
