@@ -1,0 +1,80 @@
+<form #loginForm="ngForm" class="form-horizontals" *ngIf="formType == 'login'" (ngSubmit)="onLogin()">
+    <div class="form-group">
+        <div class="input-group">
+            <input type="email" name="email" class="form-control" placeholder="Email" required="required"
+                [(ngModel)]="login.email">
+        </div>
+        <ng-container *ngIf="email.errors && (email.dirty || email.touched)">
+            <div class="alert alert-danger" *ngIf="email.errors.required">Email is required</div>
+            <div class="alert alert-danger" *ngIf="email.errors.email">Email not corect</div>
+        </ng-container>
+    </div>
+    <div class="form-group ">
+        <div class="input-group">
+            <input type="password" name="password" class="form-control" placeholder="Password" required="required"
+                [(ngModel)]="login.password" #password="ngModel">
+        </div>
+        <ng-container *ngIf="password.errors && (password.dirty || password.touched)">
+            <div class="alert alert-danger" *ngIf="password.errors.required">Password is required</div>
+        </ng-container>
+    </div>
+    <div class="form-group">
+        <input type="checkbox" id="rememberMe">
+        <label for="rememberMe">Remember Me</label>
+    </div>
+    <input type="submit" value="Login" class="btn btn-success" [disabled]="!loginForm.form.valid">
+</form>
+
+<form [formGroup]="formRegister" class="form-horizontal" *ngIf="formType == 'registration'"
+    (ngSubmit)="onRegistration()">
+    <div class="form-group ">
+        <div class="input-group">
+            <input type="text" name="register_username" class="form-control" placeholder="Username"
+                formControlName="userName">
+        </div>
+        <ng-container *ngIf="f.userName.errors && (f.userName.dirty || f.userName.touched)">
+            <div class="alert alert-danger" *ngIf="f.userName.errors.required">Password is required</div>
+        </ng-container>
+    </div>
+    <div class="form-group ">
+        <div class="input-group">
+            <input type="text" name="register_fullname" class="form-control" placeholder="Full name"
+                formControlName="fullName">
+        </div>
+        <ng-container *ngIf="f.fullName.errors && (f.fullName.dirty || f.fullName.touched)">
+            <div class="alert alert-danger" *ngIf="f.fullName.errors.required">Password is required</div>
+        </ng-container>
+    </div>
+    <div class="form-group ">
+        <div class="input-group">
+            <input type="email" name="register_email" class="form-control" placeholder="Email" formControlName="email">
+        </div>
+        <ng-container *ngIf="f.email.errors && (f.email.dirty || f.email.touched)">
+            <div class="alert alert-danger" *ngIf="f.email.errors.required">Email is required</div>
+            <div class="alert alert-danger" *ngIf="f.email.errors.email">Email not corect</div>
+        </ng-container>
+    </div>
+    <div class="form-group ">
+        <div class="input-group">
+            <input type="password" name="register_password" class="form-control" placeholder="Password"
+                formControlName="password">
+        </div>
+        <ng-container *ngIf="f.password.errors && (f.password.dirty || f.password.touched)">
+            <div class="alert alert-danger" *ngIf="f.password.errors.required">Password is required</div>
+            <div class="alert alert-danger" *ngIf="f.password.errors.pattern">Password must be at least 6 characters
+            </div>
+        </ng-container>
+    </div>
+    <div class="form-group ">
+        <div class="input-group">
+            <input type="password" name="register_cpassword" class="form-control" placeholder="Confirm Password"
+                formControlName="confirmPassword">
+        </div>
+        <ng-container *ngIf="f.confirmPassword.errors && (f.confirmPassword.dirty || f.confirmPassword.touched)">
+            <div class="alert alert-danger" *ngIf="f.confirmPassword.errors.required">Email is required</div>
+            <div class="alert alert-danger" *ngIf="f.confirmPassword.errors.mismatch">Passwords must match</div>
+        </ng-container>
+        <div class="alert alert-danger" *ngIf="formRegister.errors?.notSame">Passwords must match</div>
+    </div>
+    <input type="submit" value="Register" class="btn btn-success" [disabled]="!formRegister.valid">
+</form>

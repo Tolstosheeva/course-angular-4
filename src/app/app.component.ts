@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  formType: string = 'registration';
   
- }
+  login = {
+  email: '',
+  password: ''
+  }
+
+  
+  sendProduct() {
+    console.log(this.login);
+    
+  }
+  changeForm(type: string) {
+    this.formType = type;
+  }
+  onLogin() {
+    console.log(this.login);
+  }
+
+  onRegistration() {
+    
+  }
+}
