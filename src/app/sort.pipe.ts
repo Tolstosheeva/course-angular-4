@@ -1,20 +1,20 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Product } from './user.model';
+import { IProduct } from './product';
 
 @Pipe({
-  name: 'sort'
+  name: 'sort',
+  pure: false
 })
 export class SortPipe implements PipeTransform {
 
-  transform(value: Product[], ...args: unknown[]): unknown {
-    console.log(value, args);
-    function sortArray(a: Product, b: Product): number {
-      if (args[0] === 'desc') {
-        return b.price - a.price;
-      } else {
-        return a.price - b.price;
-      }
+  transform(array: IProduct[], args?: any): any {
+    if(args == 'increase') {
+      return array.sort((a, b) => b.price - a.price);
+    } else if(args == 'decrease') {
+      return array.sort((a, b) => a.price - b.price);
+    } else if(args == 'no') {
+      return array;
     }
-    return value.sort(sortArray);
   }
+
 }

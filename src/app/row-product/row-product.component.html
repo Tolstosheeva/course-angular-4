@@ -1,0 +1,8 @@
+<td scope="row">{{id + 1}}</td>
+<td>{{ product.name }}</td>
+<td>{{ product.price | currency }}</td>
+<td>
+  <button type="button" class="close" (click)="deleteProduct(id)">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</td>

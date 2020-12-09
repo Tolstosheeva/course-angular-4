@@ -1,46 +1,38 @@
-<form (ngSubmit)="sendProduct()">
-  <h2>Product list</h2>
-  <div class="form-row form-group">
-      <div class="col">
-      <input type="text" class="form-control" placeholder="Name Product" 
-      [(ngModel)]="newProduct.name" name="name">
+<h2>Product list</h2>
+<div class="form-row form-group">
+    <div class="col">
+      <input type="text" class="form-control" placeholder="Name Product" #name>
     </div>
     <div class="col">
-      <input type="text" class="form-control" placeholder="Price"
-       [(ngModel)]="newProduct.price" name="price">
+      <input type="text" class="form-control" placeholder="Price" #price>
     </div>
     <div class="col">
-      <input type="submit" class="btn btn-primary" value="Add">
+      <input type="button" class="btn btn-primary" value="Add" (click)="addProduct(name.value, price.value)">
+     </div>
+</div>
+<div class="form-row form-group">
+  <div class="col-4">
+    <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchProduct">
     </div>
-  </div>
-  <div class="form-row form-group">
-    <div class="col-4">
-      <input type="text" class="form-control" placeholder="Search"[(ngModel)]="name" >
-    </div>
-  </div>
-</form>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Product</th>
-        <th scope="col" (click)="sortClick()">Price</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody *ngFor="let product of products | sort : sortOrign | search : name">
-      <tr>
-        <th scope="row">{{product.id}}</th>
-        <td>{{product.name}}</td>
-        <td>{{product.price | currency}}</td>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Product</th>
+      <th scope="col" (click)="changeOrder()">Price</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of products | search : searchProduct | sort : direction; let i = index" app-row-product [product]="item" [id]="i" (deleteItem)="deleteProduct($event)">
+    </tr>
+  </tbody>
+  <tfoot>
+    <td>Total</td>
+    <td></td>
+    <td>{{ products | search : searchProduct | sum : 'price' | currency}}</td>
+    <td></td>
+  </tfoot>
+</table>
   
-      </tr>
-    </tbody>
-    <tfoot>
-      <td>Total</td>
-      <td></td>
-      <td>$200</td>
-      <td></td>
-    </tfoot>
-  </table>
-  </form>
