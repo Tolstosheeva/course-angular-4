@@ -4,9 +4,10 @@ import { IProduct } from './product';
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ]
+  styleUrls: [ './app.component.scss' ]
 })
 export class AppComponent  {
+  searchProduct = '';
   products: IProduct[] = [{
     name: 'Product 1',
     price: 50
@@ -36,12 +37,12 @@ export class AppComponent  {
     this.total = tempTotal;
   }
 
-  addProduct(name,price) {
+  addProduct(name:string,price:string) {
     this.products.push({name: name, price: +price});
     this.calcTotal();
   }
 
-  deleteProduct(id) {
+  deleteProduct(id:number) {
     this.products.splice(id, 1);
     this.calcTotal();
   }
@@ -50,4 +51,5 @@ export class AppComponent  {
     this.stateDirection = !this.stateDirection;
     this.direction = this.stateDirection ? 'increase' : 'decrease';
   }
+
 }
