@@ -8,24 +8,9 @@ import { Component, Input } from '@angular/core';
 export class AppComponent {
   formType: string = 'registration';
   
-  login = {
-  email: '',
-  password: ''
-  }
-
   
-  sendProduct() {
-    console.log(this.login);
-    
-  }
   changeForm(type: string) {
     this.formType = type;
   }
-  onLogin() {
-    console.log(this.login);
-  }
-
-  onRegistration() {
-    
-  }
+  
 }
