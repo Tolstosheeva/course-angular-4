@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class FormComponent implements OnInit {
   @Input()
-  formType!: string;
+  formType: string = 'registration';
   
   login = {
     email: '',
@@ -16,11 +16,12 @@ export class FormComponent implements OnInit {
   }
 
 
-  formRegister!: FormGroup;
+  formRegister: FormGroup | any;
   show = true;
 
   constructor(
     private fb: FormBuilder
+   
   ) { }
 
   ngOnInit(): void {
@@ -38,8 +39,8 @@ export class FormComponent implements OnInit {
     return this.formRegister.controls;
   }
   pwdMatchValidator(group: FormGroup) {
-    let pass = group.get('password').value;
-    let confirmPass = group.get('confirmPassword').value;
+    let pass = this.formRegister.controls.password.value;
+    let confirmPass = this.formRegister.controls.confirnPAssword.value;
 
     return pass === confirmPass ? null : { notSame: true } 
  }
