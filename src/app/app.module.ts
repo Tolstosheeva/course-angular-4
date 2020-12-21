@@ -13,21 +13,20 @@ import { BlogComponent } from './blog/blog.component';
 import { BlogSingleComponent } from './blog-single/blog-single.component';
 import { PostComponent } from './post/post.component';
 
-const routes: Routes =[{
-  path:'home', component: HomeComponent
-
-},{
-  path:'about',component:AboutComponent
-},{
-  path:'contact',component:ContactComponent
-},{
-  path:'blog', component:BlogComponent
-},{
-  path:'blog/:id',component:BlogSingleComponent
-},{
-  path:'',redirectTo:'home',pathMatch:'full'
-}];
-
+const routes: Routes = [{
+  path: 'home', component: HomeComponent
+}, {
+  path: 'post', component: PostComponent
+}, {
+  path: 'blog', component: BlogComponent
+}, {
+  path: 'blog/:id', component: PostComponent
+},  {
+  path: '**', component: HomeComponent
+}, {
+  path: '', component: HomeComponent
+}
+];
 
 
 @NgModule({

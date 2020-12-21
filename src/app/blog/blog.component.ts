@@ -9,17 +9,17 @@ import { Post } from '../post.model';
 })
 export class BlogComponent implements OnInit {
 
-  posts: Post[] = [];
+  posts: Post[] | undefined
 
   constructor(
     private dataService: DataService
   ) { }
 
   ngOnInit(): void {
-    this.dataService.getAllPosts().subscribe((res: Post[]) => {
-      console.log(res);
-      this.posts = res;
-    });
+    this.dataService.getAllPosts().subscribe((res: Post[] | undefined) => {
+    console.log(res);
+    this.posts = res;
+  });
   }
 
 }

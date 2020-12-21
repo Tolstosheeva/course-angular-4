@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DataService } from '../data.service';
+import { Post } from '../post.model';
 
 @Component({
   selector: 'app-blog-single',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogSingleComponent implements OnInit {
 
-  constructor() { }
+  post!: Post;
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private dataService: DataService
+  ) { }
 
   ngOnInit(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    console.log(id);
+    this.dataService.getPostById(id).subscribe((res) => {
+      this.post = res;
+    });
+  }
+
+  backTo() {
+    this.router.navigate(['blog']);
   }
 
 }
