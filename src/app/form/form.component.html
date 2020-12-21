@@ -1,0 +1,20 @@
+<div class="container">
+    <form [formGroup]="commentForm" (ngSubmit)="formInformation()">
+    
+        <mat-form-field class="example-form-field">
+            <mat-label>Name</mat-label>
+            <input matInput type="text" formControlName="name">
+            <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                </button>
+        </mat-form-field>
+        <mat-radio-group aria-label="Select an option"class="radio" formControlName="radio">
+            <mat-radio-button value="Option1">Option 1</mat-radio-button>
+            <mat-radio-button value="Option2">Option 2</mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field appearance="fill">
+            <mat-label> Your comment</mat-label>
+            <textarea matInput formControlName="comment"></textarea>
+        </mat-form-field>
+        <button mat-raised-button color="primary">Send</button>
+    </form>
+    </div>
