@@ -16,8 +16,8 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
     this.commentForm = this.fb.group({
       name: ['',[ Validators.required]],
-      radio: ['', [Validators.required, Validators.minLength(10)]],
-      comment: ['', [Validators.required, Validators.minLength(10)]],
+      radio: ['', [Validators.required, Validators]],
+      Comment: ['', [Validators.required, Validators.minLength(10)]],
     });
   }
 
