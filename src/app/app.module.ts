@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRountingModule } from './app-routing.module';
+
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -12,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    AppRountingModule,
+    
     BrowserAnimationsModule,
     HttpClientModule,
     AppModule
