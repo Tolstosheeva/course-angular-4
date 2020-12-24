@@ -9,17 +9,18 @@ import { DataService } from 'src/app/shared/servises/data.service';
 })
 export class TodoListComponent implements OnInit {
 
-  todos!: Todo[];
+  todos: Todo[] = [];
 
   constructor(
     private data: DataService
   ) { }
 
   ngOnInit(): void {
-    this.data.getAllTodo().subscribe((res: Todo[]) => {
+    this.data.getAllTodo().subscribe((res) => {
       this.todos = res;
       console.log(res);
     });
+  
   }
 
 }

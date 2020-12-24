@@ -8,6 +8,9 @@ import { Todo } from '../models/todo.model';
   providedIn: 'root'
 })
 export class DataService {
+  static getPostById(id: number) {
+    throw new Error('Method not implemented.');
+  }
 
   urlApi = environment.urlApi;
 
@@ -17,5 +20,8 @@ export class DataService {
 
   getAllTodo(): Observable<Todo[]> {
     return this.http.get<Todo[]>(this.urlApi);
+  }
+  getPostById(id:number){
+    return this.http.get<Todo[]>(`https://5fe3bb408bf8af001766e977.mockapi.io/todo/${id}`);
   }
 }
