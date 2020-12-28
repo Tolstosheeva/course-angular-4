@@ -1,6 +1,10 @@
-<div class="container" *ngIf ="todo;else loading" >
+<ng-container *ngIf="todo; else loading">
     <h2>{{todo.name}}</h2>
     <p>{{todo.description}}</p>
-    <p>{{todo.description}}</p>
-</div>
-<button class="btn" (click)="allTodos()">Back</button>
+    <p>Deadline: {{todo.createdAt | date}}</p>
+    <p>Priority: {{Priority[todo.priority]}}</p>
+  </ng-container>
+  <ng-template #loading>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </ng-template>
+  

@@ -6,14 +6,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule } from '@angular/common/http';
 import { AppRountingModule } from './app-routing.module';
-
-
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import { HeaderComponent } from './shared/header/header.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
     
   ],
   imports: [
@@ -21,8 +23,8 @@ import { AppRountingModule } from './app-routing.module';
     AppRountingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    
-    
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

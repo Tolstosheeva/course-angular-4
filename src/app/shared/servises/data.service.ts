@@ -18,7 +18,12 @@ export class DataService {
   getAllTodo(): Observable<Todo[]> {
     return this.http.get<Todo[]>(this.urlApi);
   }
-  getPostById(id:number){
-    return this.http.get<Todo[]>(`https://5fe3bb408bf8af001766e977.mockapi.io/todo/${id}`);
+
+  getTodoById(id: number): Observable<Todo> {
+    return this.http.get<Todo>(`${this.urlApi}${id}`);
+  }
+
+  addNewTodo(todo: Todo): Observable<any> {
+    return this.http.post(this.urlApi, todo);
   }
 }
