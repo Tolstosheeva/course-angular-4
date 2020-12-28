@@ -8,8 +8,6 @@ import { DataService } from 'src/app/shared/servises/data.service';
   styleUrls: ['./todo-single.component.scss']
 })
 export class TodoSingleComponent implements OnInit {
-  [x: string]: any;
-  route: any;
 
   constructor() { }
 

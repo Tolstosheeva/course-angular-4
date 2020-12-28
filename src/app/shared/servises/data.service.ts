@@ -8,9 +8,6 @@ import { Todo } from '../models/todo.model';
   providedIn: 'root'
 })
 export class DataService {
-  static getPostById(id: number) {
-    throw new Error('Method not implemented.');
-  }
 
   urlApi = environment.urlApi;
 
