@@ -1,32 +1,27 @@
-<div class="container">
-    <div class="row bg-secondary justify-content-center 
+<div class="row bg-secondary justify-content-center 
             align-items-center">
         <div class="col-3"></div>
         <div class="col-6 text-light h2">
             Todo List
         </div>
     </div>
-    <div class="row mt-1">
-        <div class="col-3 d-none col-md-3 d-md-block"></div>
-        <div class="col-12 col-md-6 bg-muted d-flex justify-content-center align-items-center text-light">
-            <input [(ngModel)]="newTask" type="text" value="" class="col-7 form-control" style="width:300px;">
-            <div class="col-1"></div>
-            <button (click)="addToList()" class="btn btn-secondary text-light"> ADD</button>
-        </div>
-        <div class="col-3 d-none col-md-3 d-md-block"></div>
-    </div>
-    <div *ngFor="let x of items; let index = index;" class="row mt-1">
-        <div class="col-3 d-none col-md-3 d-md-block">
-        </div>
-        <div class="col-12 col-md-6 bg-secondary d-flex justify-content-center align-items-center text-light">
-            <input click="successful()" type="checkbox" [(ngModel)]="taskIsDone"> 
-            <div class="col-9 text-light" [ngClass]="{'checked': taskIsDone}">{{x}}</div>
-
-            <input (click)="deleteTask(index)" type="button" value="Delete" class="col-2 btn">
-
-        </div>
-        <div class="col-3 d-none col-md-3 d-md-block">
-
-        </div>
-    </div>
-</div>
+<form [formGroup]='todoForm' (ngSubmit)="addTodo()" class="input-group mb-3 d-flex justify-content-center" >
+  <div class="col-12 col-md-6 bg-muted d-inline-flex justify-content-center align-items-center text-light">
+	<input type="text" formControlName="name" class="col-7 form-control" style="width:300px;">
+	 <button class="btn btn-secondary text-light "> ADD TASK</button>
+  </div>
+</form>
+	<div class="card" *ngFor="let task of todo; let i = index;"
+		[ngClass]="{'bg-success': task.complete, 'bg-secondary': !task.complete}">
+		<div class="card-body">
+			<div class="d-flex justify-content-between mx-5">
+				<label>
+                <h5 class="card-title center">{{task.name}}</h5>
+                <input type="checkbox" (change)="changeTodo($event)" name="complete" [(ngModel)]="task.complete">
+            </label>
+				<div>
+					<button class="btn" (click)="deleteTodo(i)">Delete</button>
+				</div>
+			</div>
+		</div>
+	</div>

@@ -3,15 +3,22 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule } from '@angular/common/http';
 import { TodoListComponent } from './todo-list/todo-list.component';
+
+import { CartComponent } from './cart/cart.component';
+import { ProductComponent } from './product/product.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoListComponent,
+    CartComponent,
+    ProductComponent
+    ,
     
   ],
   imports: [
@@ -19,6 +26,7 @@ import { TodoListComponent } from './todo-list/todo-list.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
