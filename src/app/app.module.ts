@@ -1,21 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRountingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import {HttpClientModule } from '@angular/common/http';
+import { TodoListComponent } from './todo-list/todo-list.component';
+import { ProductComponent } from './product/product.component';
+import { CartComponent } from './cart/cart.component';
+
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TodoListComponent,
+    ProductComponent,
+    CartComponent,
+    
+    
   ],
   imports: [
     BrowserModule,
-    AppRountingModule,
-    BrowserAnimationsModule,
+    AppRoutingModule,
+    FormsModule,
     HttpClientModule,
-    AppModule
   ],
   providers: [],
   bootstrap: [AppComponent]
