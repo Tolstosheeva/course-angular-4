@@ -5,7 +5,7 @@ import { CartProduct, Category, Product } from '../models/product.models';
   providedIn: 'root'
 })
 export class DataService {
-
+  
   products: Product[] = [{
     name: 'Product 1',
     category: Category.laptop,
@@ -24,10 +24,10 @@ export class DataService {
   }];
 
   cart: CartProduct[] = [];
-
+  
   constructor() {
     if (localStorage.getItem('cart')){
-      this.cart = JSON.parse(localStorage.getItem('cart'));
+      this.cart = JSON.parse(localStorage.getItem('cart')!);
     }
    }
 
